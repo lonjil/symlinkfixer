@@ -1,0 +1,21 @@
+[package]
+name = "symlinkfixer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cap-std = { version = "3.0.0", default-features = false }
+tracing = { version = "0.1.40", default-features = false }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+clap = { version = "4.5.2", features = ["unicode", "derive"] }
+rustix = { version = "0.38.32", features = ["fs"] }
+rand = "0.8.5"
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.dev.build-override]
+opt-level = 3
+
+[profile.release]
+strip = true
